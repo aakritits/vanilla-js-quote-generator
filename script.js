@@ -23,11 +23,11 @@ function updateButtonText() {
       (quote) => quote.category === currentCategory
     );
     currentQuoteIndex = -1;
-    document.getElementById("quote-container").classList.remove("show"); // Hide container initially
+    document.getElementById("quote-container").classList.remove("show");
   } else {
     button.textContent = "Generate a Random Quote";
     filteredQuotes = [];
-    document.getElementById("quote-container").classList.remove("show"); // Hide container initially
+    document.getElementById("quote-container").classList.remove("show");
   }
 }
 
@@ -98,6 +98,28 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("dark-mode");
     themeToggle.checked = true;
   }
+});
+
+// Initialize the font size
+let currentFontSize = 16; // Default font size in px
+
+// Function to update font size
+function updateFontSize(size) {
+  const quoteText = document.getElementById("demo");
+  currentFontSize += size;
+  if (currentFontSize < 12) currentFontSize = 12;
+  if (currentFontSize > 36) currentFontSize = 18;
+  quoteText.style.fontSize = `${currentFontSize}px`;
+}
+
+// Event listener for the increase font size button
+document.getElementById("increase-font").addEventListener("click", function () {
+  updateFontSize(2); //2px
+});
+
+// Event listener for the decrease font size button
+document.getElementById("decrease-font").addEventListener("click", function () {
+  updateFontSize(-2);
 });
 
 // Event listener for the theme toggle switch

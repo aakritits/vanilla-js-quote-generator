@@ -27,12 +27,21 @@
         
         <!-- Container for the quote and navigation buttons -->
         <div id="quote-container">
-            <p id="demo" class="quote-text"></p>
+            <div class="font-size-controls">
+                <button id="decrease-font" class="font-size-button">-</button>
+                <div class="quote-wrapper">
+                    <p id="demo" class="quote-text"></p>
+                </div>
+                <button id="increase-font" class="font-size-button">+</button>
+            </div>
             <div class="nav-buttons">
                 <button id="prev-quote" class="nav-button">Previous</button>
                 <button id="next-quote" class="nav-button">Next</button>
             </div>
         </div>
+        
+        
+        
     </div>
     
     <script type="module" src="quotes.js"></script>
