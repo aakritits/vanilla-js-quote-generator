@@ -1,9 +1,8 @@
-/* General Reset */
 body,
 h1,
 button,
 p {
-  margin: 0;
+  margin: 2;
   padding: 0;
   box-sizing: border-box;
 }
@@ -14,6 +13,12 @@ body {
   color: #333;
   text-align: center;
   padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #333;
+  color: #f4f4f9;
 }
 
 .container {
@@ -25,6 +30,10 @@ h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
+}
+
+body.dark-mode h1 {
+  color: #f4f4f9;
 }
 
 button {
@@ -44,6 +53,10 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+body.dark-mode button {
+  background-color: #0056b3;
+}
+
 input[type="radio"] {
   margin: 10px 5px;
   cursor: pointer;
@@ -60,65 +73,71 @@ label:hover {
   font-weight: bold;
 }
 
+body.dark-mode label {
+  color: #f4f4f9;
+}
+
 .categories {
   margin-bottom: 20px;
 }
 
 #quote-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 20px 0;
   position: relative;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  flex-direction: row;
 }
 
 #quote-container.show {
   opacity: 1;
 }
 
-#quote-container .nav-button {
-  display: block;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  z-index: 1;
-  font-size: 1rem;
-}
-
-#prev-quote {
-  position: relative;
-  margin-right: 10px;
-}
-
-#next-quote {
-  position: relative;
-  margin-left: 10px;
-}
-
-#prev-quote:hover,
-#next-quote:hover {
-  background-color: #0056b3;
-}
-
-#demo {
+#quote-container .quote-text {
   font-size: 1.2rem;
-  margin: 0 20px;
+  margin: 0;
   padding: 15px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px;
-  display: inline-block;
   text-align: center;
   position: relative;
+}
+
+body.dark-mode #quote-container .quote-text {
+  background-color: #444;
+  border-color: #666;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.nav-buttons .nav-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+ 
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.nav-buttons .nav-button:hover {
+  background-color: #0056b3;
+}
+
+body.dark-mode .nav-buttons .nav-button:hover {
+  background-color: #003d80;
 }
 
 @media (max-width: 600px) {
@@ -132,18 +151,66 @@ label:hover {
 
   #quote-container {
     flex-direction: column;
-    opacity: 1;
   }
 
-  #demo {
+  #quote-container .nav-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #quote-container .nav-button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  #quote-container .quote-text {
     font-size: 1rem;
     padding: 10px;
     margin: 10px 0;
   }
+}
 
-  #prev-quote,
-  #next-quote {
-    width: 100%;
-    margin: 5px 0;
-  }
+/* Togggle Theme */
+.theme-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-switch .slider {
+  position: relative;
+  width: 34px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+}
+
+.theme-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: transform 0.3s;
+}
+
+.theme-switch input:checked + .slider {
+  background-color: #007bff;
+}
+
+.theme-switch input:checked + .slider:before {
+  transform: translateX(14px);
 }

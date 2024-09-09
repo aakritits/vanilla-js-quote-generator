@@ -8,22 +8,30 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hello, Vanilla JS!</h1>
+        <h1>Quote Generator</h1>
         <button id="fetch-quote">Generate a Random Quote</button>
         
+        <!-- Theme Toggle Switch -->
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
+
         <!-- Categories -->
         <div class="categories">
-            <input type="radio" name="radio" id="fetch-science-quote">
+            <input type="radio" name="radio" id="fetch-science-quote" checked>
             <label for="fetch-science-quote">Science Quotes</label>
             <input type="radio" name="radio" id="fetch-inspiration-quote">
             <label for="fetch-inspiration-quote">Inspiration Quotes</label>
         </div>
         
-        <!-- NavigationButton Container -->
+        <!-- Container for the quote and navigation buttons -->
         <div id="quote-container">
-            <button id="prev-quote" class="nav-button">Previous</button>
             <p id="demo" class="quote-text"></p>
-            <button id="next-quote" class="nav-button">Next</button>
+            <div class="nav-buttons">
+                <button id="prev-quote" class="nav-button">Previous</button>
+                <button id="next-quote" class="nav-button">Next</button>
+            </div>
         </div>
     </div>
     

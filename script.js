@@ -22,7 +22,7 @@ function updateButtonText() {
     filteredQuotes = quotes.filter(
       (quote) => quote.category === currentCategory
     );
-    currentQuoteIndex = -1; // Reset index when category changes
+    currentQuoteIndex = -1;
     document.getElementById("quote-container").classList.remove("show"); // Hide container initially
   } else {
     button.textContent = "Generate a Random Quote";
@@ -42,10 +42,10 @@ function displayQuote(index) {
     document.getElementById(
       "demo"
     ).textContent = `"${quote.quote}" - ${quote.author}`;
-    document.getElementById("quote-container").classList.add("show"); // Show container
+    document.getElementById("quote-container").classList.add("show");
   } else {
     document.getElementById("demo").textContent = "No quotes available.";
-    document.getElementById("quote-container").classList.remove("show"); // Hide container
+    document.getElementById("quote-container").classList.remove("show");
   }
 }
 
@@ -64,7 +64,7 @@ document.getElementById("fetch-quote").addEventListener("click", function () {
   } else {
     document.getElementById("demo").textContent =
       "Please select a category first.";
-    document.getElementById("quote-container").classList.remove("show"); // Hide container initially
+    document.getElementById("quote-container").classList.remove("show");
   }
 });
 
@@ -84,7 +84,29 @@ document.getElementById("next-quote").addEventListener("click", function () {
   }
 });
 
-// Set initial button text based on the default selected radio button and hide navigation buttons initially
+// Set initial button text based on the default selected radio button
 document.addEventListener("DOMContentLoaded", () => {
-  updateButtonText(); // Update button text when the page loads
+  updateButtonText();
+});
+// Theme toggle switch
+const themeToggle = document.getElementById("theme-toggle");
+
+// Check the saved theme preference and apply it
+document.addEventListener("DOMContentLoaded", () => {
+  const isDarkMode = localStorage.getItem("dark-mode") === "true";
+  if (isDarkMode) {
+    document.body.classList.add("dark-mode");
+    themeToggle.checked = true;
+  }
+});
+
+// Event listener for the theme toggle switch
+themeToggle.addEventListener("change", () => {
+  if (themeToggle.checked) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("dark-mode", "true");
+  } else {
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("dark-mode", "false");
+  }
 });
