@@ -1,6 +1,6 @@
 import quotes from "./quotes.js";
 
-let currentQuoteIndex = -1; // Index of the current quote
+let currentQuoteIndex = -1;
 let currentCategory = "science";
 let filteredQuotes = [];
 
@@ -22,10 +22,12 @@ function updateButtonText() {
     filteredQuotes = quotes.filter(
       (quote) => quote.category === currentCategory
     );
-    currentQuoteIndex = -1;
+    currentQuoteIndex = -1; // Reset index when category changes
+    document.getElementById("quote-container").classList.remove("show"); // Hide container initially
   } else {
     button.textContent = "Generate a Random Quote";
     filteredQuotes = [];
+    document.getElementById("quote-container").classList.remove("show"); // Hide container initially
   }
 }
 
@@ -40,8 +42,10 @@ function displayQuote(index) {
     document.getElementById(
       "demo"
     ).textContent = `"${quote.quote}" - ${quote.author}`;
+    document.getElementById("quote-container").classList.add("show"); // Show container
   } else {
     document.getElementById("demo").textContent = "No quotes available.";
+    document.getElementById("quote-container").classList.remove("show"); // Hide container
   }
 }
 
@@ -60,6 +64,7 @@ document.getElementById("fetch-quote").addEventListener("click", function () {
   } else {
     document.getElementById("demo").textContent =
       "Please select a category first.";
+    document.getElementById("quote-container").classList.remove("show"); // Hide container initially
   }
 });
 
@@ -79,7 +84,7 @@ document.getElementById("next-quote").addEventListener("click", function () {
   }
 });
 
-// Set initial button text based on the selected radio button
+// Set initial button text based on the default selected radio button and hide navigation buttons initially
 document.addEventListener("DOMContentLoaded", () => {
   updateButtonText(); // Update button text when the page loads
 });

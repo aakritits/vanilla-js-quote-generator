@@ -1,14 +1,149 @@
+/* General Reset */
+body,
+h1,
+button,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
   text-align: center;
-  margin-top: 50px;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
   color: #333;
 }
 
-p {
-  color: #555;
-  font-size: 18px;
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="radio"] {
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+label {
+  font-size: 1rem;
+  color: #007bff;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+label:hover {
+  font-weight: bold;
+}
+
+.categories {
+  margin-bottom: 20px;
+}
+
+#quote-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  flex-direction: row;
+}
+
+#quote-container.show {
+  opacity: 1;
+}
+
+#quote-container .nav-button {
+  display: block;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1;
+  font-size: 1rem;
+}
+
+#prev-quote {
+  position: relative;
+  margin-right: 10px;
+}
+
+#next-quote {
+  position: relative;
+  margin-left: 10px;
+}
+
+#prev-quote:hover,
+#next-quote:hover {
+  background-color: #0056b3;
+}
+
+#demo {
+  font-size: 1.2rem;
+  margin: 0 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  #quote-container {
+    flex-direction: column;
+    opacity: 1;
+  }
+
+  #demo {
+    font-size: 1rem;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  #prev-quote,
+  #next-quote {
+    width: 100%;
+    margin: 5px 0;
+  }
 }

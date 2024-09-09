@@ -7,13 +7,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Hello, Vanilla JS!</h1>
-    <button id="fetch-quote">Generate a Random Quote</button>
-    <button id="prev-quote">Previous</button>
-    <button id="next-quote">Next</button>
-    <p id="demo"></p>
-    <input type="radio" name="radio" id="fetch-science-quote">Science Quotes</input>
-    <input type="radio" name="radio" id="fetch-inspiration-quote">Inspiration Quotes</input>
+    <div class="container">
+        <h1>Hello, Vanilla JS!</h1>
+        <button id="fetch-quote">Generate a Random Quote</button>
+        
+        <!-- Categories -->
+        <div class="categories">
+            <input type="radio" name="radio" id="fetch-science-quote">
+            <label for="fetch-science-quote">Science Quotes</label>
+            <input type="radio" name="radio" id="fetch-inspiration-quote">
+            <label for="fetch-inspiration-quote">Inspiration Quotes</label>
+        </div>
+        
+        <!-- NavigationButton Container -->
+        <div id="quote-container">
+            <button id="prev-quote" class="nav-button">Previous</button>
+            <p id="demo" class="quote-text"></p>
+            <button id="next-quote" class="nav-button">Next</button>
+        </div>
+    </div>
     
     <script type="module" src="quotes.js"></script>
     <script type="module" src="script.js"></script>
